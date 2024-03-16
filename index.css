@@ -209,4 +209,17 @@ header.black-bg{
     .banner__overview, .banner__title{
         max-width: 100%;
     }
+
+    .banner-content{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .movie-section-heading{
+        padding-left: 20px;   
+    }
+
+    .header-brand{
+        padding-left: 20px;
+    }
 }

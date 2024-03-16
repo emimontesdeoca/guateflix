@@ -36,8 +36,8 @@ function buildBannerSection(movie){
     const div = document.createElement('div');
 
     div.innerHTML = `
-            <h2 class="banner__title">${movie.title}</h2>
-            <p class="banner__info">Tendencias en el cine | Lanzado - ${movie.release_date} </p>
+            <h2 class="banner__title">${movie.title ?? movie.name}</h2>
+            <p class="banner__info">Tendencias en el cine | Lanzado - ${movie.release_date ?? movie.first_air_date} </p>
             <p class="banner__overview">${movie.overview && movie.overview.length > 200 ? movie.overview.slice(0,200).trim()+ '...':movie.overview}</p>
             <div class="action-buttons-cont">
                 <button class="action-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="Hawkins-Icon Hawkins-Icon-Standard"><path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path></svg> &nbsp;&nbsp; Reproducir</button>
@@ -76,12 +76,20 @@ function fetchAndbuildMovieSection(fetchUrl, categoryName){
         // console.table(res.results);
         const movies = res.results;
         if (Array.isArray(movies) && movies.length) {
-            buildMoviesSection(movies.slice(0,6), categoryName);
+            buildMoviesSection(shuffle(movies.slice(0,6)), categoryName);
         }
         return movies;
     })
     .catch(err=>console.error(err))
 }
+
+const shuffle = (array) => { 
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array; 
+  }; 
 
 function buildMoviesSection(list, categoryName){
     console.log(list, categoryName);

@@ -7,7 +7,7 @@
   "scope": "/",
   "short_name": "Guateflix",
   "start_url": "/index.html",
-  "theme_color": "#210d73",
+  "theme_color": "#141414",
   "icons": [
     {
       "src": "ios/16.png",
